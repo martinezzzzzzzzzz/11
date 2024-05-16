@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1</title>
+    <style>
+        body {
+            background-color: #ffffff; /* Color blanco */
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+                    },
+                    colors: {
+                        red: {
+                            '50': '#ffebee',
+                            '100': '#ffcdd2',
+                            '200': '#ef9a9a',
+                            '300': '#e57373',
+                            '400': '#ef5350',
+                            '500': '#f44336',
+                            '600': '#e53935',
+                            '700': '#d32f2f',
+                            '800': '#c62828',
+                            '900': '#b71c1c',
+                            'accent-100': '#ff8a80',
+                            'accent-200': '#ff5252',
+                            'accent-400': '#ff1744',
+                            'accent-700': '#d50000',
+                        },
+                        purple: {
+                            50: '#f3e5f5',
+                            100: '#e1bee7',
+                            200: '#ce93d8',
+                            300: '#ba68c8',
+                            400: '#ab47bc',
+                            500: '#9c27b0',
+                            600: '#8e24aa',
+                            700: '#7b1fa2',
+                            800: '#6a1b9a',
+                            900: '#4a148c',
+                            'accent-100': '#ea80fc',
+                            'accent-200': '#e040fb',
+                            'accent-400': '#d500f9',
+                            'accent-700': '#aa00ff',
+                        },
+                        'deep-purple': {
+                            50: '#ede7f6',
+                            100: '#d1c4e9',
+                            200: '#b39ddb',
+                            300: '#9575cd',
+                            400: '#7e57c2',
+                            500: '#673ab7',
+                            600: '#5e35b1',
+                            700: '#512da8',
+                            800: '#4527a0',
+                            900: '#311b92',
+                            'accent-100': '#b388ff',
+                            'accent-200': '#7c4dff',
+                            'accent-400': '#651fff',
+                            'accent-700': '#6200ea',
+                        },
+                        teal: {
+                            50: '#e0f2f1',
+                            100: '#b2dfdb',
+                            200: '#80cbc4',
+                            300: '#4db6ac',
+                            400: '#26a69a',
+                            500: '#009688',
+                            600: '#00897b',
+                            700: '#00796b',
+                            800: '#00695c',
+                            900: '#004d40',
+                            'accent-100': '#a7ffeb',
+                            'accent-200': '#64ffda',
+                            'accent-400': '#1de9b6',
+                            'accent-700': '#00bfa5',
+                        },
+                        indigo: {
+                            50: '#e8eaf6',
+                            100: '#c5cae9',
+                            200: '#9fa8da',
+                            300: '#7986cb',
+                            400: '#5c6bc0',
+                            500: '#3f51b5',
+                            600: '#3949ab',
+                            700: '#303f9f',
+                            800: '#283593',
+                            900: '#1a237e',
+                            'accent-100': '#8c9eff',
+                            'accent-200': '#536dfe',
+                            'accent-400': '#3d5afe',
+                            'accent-700': '#304ffe',
+                        },
+                        pink: {
+                            50: '#fce4ec',
+                            100: '#f8bbd0',
+                            200: '#f48fb1',
+                            300: '#f06292',
+                            400: '#ec407a',
+                            500: '#e91e63',
+                            600: '#d81b60',
+                            700: '#c2185b',
+                            800: '#ad1457',
+                            900: '#880e4f',
+                            'accent-100': '#ff80ab',
+                            'accent-200': '#ff4081',
+                            'accent-400': '#f50057',
+                            'accent-700': '#c51162',
+                        },
+                        blue: {
+                            50: '#e3f2fd',
+                            100: '#bbdefb',
+                            200: '#90caf9',
+                            300: '#64b5f6',
+                            400: '#42a5f5',
+                            500: '#2196f3',
+                            600: '#1e88e5',
+                            700: '#1976d2',
+                            800: '#1565c0',
+                            900: '#0d47a1',
+                            'accent-100': '#82b1ff',
+                            'accent-200': '#448aff',
+                            'accent-400': '#2979ff',
+                            'accent-700': '#2962ff',
+                        },
+                        'light-blue': {
+                            50: '#e1f5fe',
+                            100: '#b3e5fc',
+                            200: '#81d4fa',
+                            300: '#4fc3f7',
+                            400: '#29b6f6',
+                            500: '#03a9f4',
+                            600: '#039be5',
+                            700: '#0288d1',
+                            800: '#0277bd',
+                            900: '#01579b',
+                            'accent-100': '#80d8ff',
+                            'accent-200': '#40c4ff',
+                            'accent-400': '#00b0ff',
+                            'accent-700': '#0091ea',
+                        },
+                        cyan: {
+                            50: '#e0f7fa',
+                            100: '#b2ebf2',
+                            200: '#80deea',
+                            300: '#4dd0e1',
+                            400: '#26c6da',
+                            500: '#00bcd4',
+                            600: '#00acc1',
+                            700: '#0097a7',
+                            800: '#00838f',
+                            900: '#006064',
+                            'accent-100': '#84ffff',
+                            'accent-200': '#18ffff',
+                            'accent-400': '#00e5ff',
+                            'accent-700': '#00b8d4',
+                        },
+                        gray: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#eeeeee',
+                            300: '#e0e0e0',
+                            400: '#bdbdbd',
+                            500: '#9e9e9e',
+                            600: '#757575',
+                            700: '#616161',
+                            800: '#424242',
+                            900: '#212121',
+                        },
+                        'blue-gray': {
+                            50: '#eceff1',
+                            100: '#cfd8dc',
+                            200: '#b0bec5',
+                            300: '#90a4ae',
+                            400: '#78909c',
+                            500: '#607d8b',
+                            600: '#546e7a',
+                            700: '#455a64',
+                            800: '#37474f',
+                            900: '#263238',
+                        },
+                        green: {
+                            50: '#e8f5e9',
+                            100: '#c8e6c9',
+                            200: '#a5d6a7',
+                            300: '#81c784',
+                            400: '#66bb6a',
+                            500: '#4caf50',
+                            600: '#43a047',
+                            700: '#388e3c',
+                            800: '#2e7d32',
+                            900: '#1b5e20',
+                            'accent-100': '#b9f6ca',
+                            'accent-200': '#69f0ae',
+                            'accent-400': '#00e676',
+                            'accent-700': '#00c853',
+                        },
+                        'light-green': {
+                            50: '#f1f8e9',
+                            100: '#dcedc8',
+                            200: '#c5e1a5',
+                            300: '#aed581',
+                            400: '#9ccc65',
+                            500: '#8bc34a',
+                            600: '#7cb342',
+                            700: '#689f38',
+                            800: '#558b2f',
+                            900: '#33691e',
+                            'accent-100': '#ccff90',
+                            'accent-200': '#b2ff59',
+                            'accent-400': '#76ff03',
+                            'accent-700': '#64dd17',
+                        },
+                        lime: {
+                            50: '#f9fbe7',
+                            100: '#f0f4c3',
+                            200: '#e6ee9c',
+                            300: '#dce775',
+                            400: '#d4e157',
+                            500: '#cddc39',
+                            600: '#c0ca33',
+                            700: '#afb42b',
+                            800: '#9e9d24',
+                            900: '#827717',
+                            'accent-100': '#f4ff81',
+                            'accent-200': '#eeff41',
+                            'accent-400': '#c6ff00',
+                            'accent-700': '#aeea00',
+                        },
+                        amber: {
+                            50: '#fff8e1',
+                            100: '#ffecb3',
+                            200: '#ffe082',
+                            300: '#ffd54f',
+                            400: '#ffca28',
+                            500: '#ffc107',
+                            600: '#ffb300',
+                            700: '#ffa000',
+                            800: '#ff8f00',
+                            900: '#ff6f00',
+                            'accent-100': '#ffe57f',
+                            'accent-200': '#ffd740',
+                            'accent-400': '#ffc400',
+                            'accent-700': '#ffab00',
+                        },
+                        yellow: {
+                            50: '#fffde7',
+                            100: '#fff9c4',
+                            200: '#fff59d',
+                            300: '#fff176',
+                            400: '#ffee58',
+                            500: '#ffeb3b',
+                            600: '#fdd835',
+                            700: '#fbc02d',
+                            800: '#f9a825',
+                            900: '#f57f17',
+                            'accent-100': '#ffff8d',
+                            'accent-200': '#ffff00',
+                            'accent-400': '#ffea00',
+                            'accent-700': '#ffd600',
+                        },
+                        orange: {
+                            50: '#fff3e0',
+                            100: '#ffe0b2',
+                            200: '#ffcc80',
+                            300: '#ffb74d',
+                            400: '#ffa726',
+                            500: '#ff9800',
+                            600: '#fb8c00',
+                            700: '#f57c00',
+                            800: '#ef6c00',
+                            900: '#e65100',
+                            'accent-100': '#ffd180',
+                            'accent-200': '#ffab40',
+                            'accent-400': '#ff9100',
+                            'accent-700': '#ff6d00',
+                        },
+                        'deep-orange': {
+                            50: '#fbe9e7',
+                            100: '#ffccbc',
+                            200: '#ffab91',
+                            300: '#ff8a65',
+                            400: '#ff7043',
+                            500: '#ff5722',
+                            600: '#f4511e',
+                            700: '#e64a19',
+                            800: '#d84315',
+                            900: '#bf360c',
+                            'accent-100': '#ff9e80',
+                            'accent-200': '#ff6e40',
+                            'accent-400': '#ff3d00',
+                            'accent-700': '#dd2c00',
+                        },
+                        brown: {
+                            50: '#efebe9',
+                            100: '#d7ccc8',
+                            200: '#bcaaa4',
+                            300: '#a1887f',
+                            400: '#8d6e63',
+                            500: '#795548',
+                            600: '#6d4c41',
+                            700: '#5d4037',
+                            800: '#4e342e',
+                            900: '#3e2723',
+                        },
+                    },
+                    spacing: {
+                        '7': '1.75rem',
+                        '9': '2.25rem',
+                        '28': '7rem',
+                        '80': '20rem',
+                        '96': '24rem',
+                    },
+                    height: {
+                        '1/2': '50%',
+                    },
+                    scale: {
+                        '30': '.3',
+                    },
+                    boxShadow: {
+                        outline: '0 0 0 3px rgba(101, 31, 255, 0.4)',
+                    },
+                },
+            },
+            variants: {
+                scale: ['responsive', 'hover', 'focus', 'group-hover'],
+                textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+                opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+                backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+            },
+            plugins: [],
+        }
+    </script>
+</head>
+
+<body>
+    <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="-my-8 divide-y-2 divide-gray-100">
+                <div class="py-8 flex flex-wrap md:flex-nowrap">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                    </div>
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Sublime Text:</h2>
+                        <p class="leading-relaxed">Es un editor de código pago con una licencia perpetua. Es rápido y
+                            ligero, y tiene una amplia gama de características, incluyendo soporte para HTML, CSS,
+                            JavaScript, PHP, Python, C++, y muchas otras.</p>
+                        <a href="https://www.sublimetext.com/"
+                            class="text-indigo-500 inline-flex items-center mt-4">Sublime text
+                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="py-8 flex flex-wrap md:flex-nowrap">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                    </div>
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Atom:</h2>
+                        <p class="leading-relaxed">Es un editor de código gratuito y de código abierto desarrollado por
+                            la comunidad. Es altamente personalizable y tiene una amplia gama de características,
+                            incluyendo soporte para HTML, CSS, JavaScript, PHP, Python, C++, y muchas otras.</p>
+                        <a href="https://atom-editor.cc/" class="text-indigo-500 inline-flex items-center mt-4">Atom
+                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="py-8 flex flex-wrap md:flex-nowrap">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                    </div>
+                    <div class="md:flex-grow">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Visual Studio Code (VS Code)</h2>
+                        <p class="leading-relaxed">Es un editor de código desarrollado por Microsoft. Se ha convertido
+                            en una de las herramientas más populares para la programación y el desarrollo de software
+                            debido a su versatilidad, rendimiento y amplia comunidad de usuarios y extensiones.</p>
+                        <a href="https://code.visualstudio.com/"
+                            class="text-indigo-500 inline-flex items-center mt-4">Visual Studio Code
+                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="py-8 flex flex-wrap md:flex-nowrap justify-center items-center">
+            <div class="max-w-4xl px-4 py-8">
+                <h1 class="text-2xl font-medium text-gray-900 title-font mb-2">HTML5</h1>
+                <p class="leading-relaxed mb-4">HTML5 es la quinta versión del lenguaje de marcado de hipertexto (HTML), que se utiliza para estructurar y presentar contenido en la web. HTML es el lenguaje fundamental utilizado para crear páginas web y definir su estructura y contenido. HTML5 trajo consigo una serie de mejoras y nuevas características en comparación con las versiones anteriores de HTML, lo que lo convirtió en un estándar ampliamente adoptado para el desarrollo de sitios web y aplicaciones web.</p>
+        
+                <p class="mb-2">Algunas de las características y mejoras más importantes de HTML5 incluyen:</p>
+        
+                <ul class="list-disc pl-4 mb-4">
+                    <li class="mb-5"><strong>Elementos semánticos:</strong> HTML5 introduce nuevos elementos semánticos que permiten a los desarrolladores etiquetar el contenido de una manera más significativa. Esto ayuda a los motores de búsqueda y a los navegadores a comprender mejor la estructura del contenido y su contexto.</li>
+                    <li class="mb-5"><strong>Compatibilidad multimedia mejorada:</strong> HTML5 incluye elementos como audio y video que permiten la incorporación de contenido multimedia sin necesidad de complementos o tecnologías externas, como Adobe Flash.</li>
+                    <li class="mb-5"><strong>Canvas y gráficos:</strong> HTML5 presenta el elemento canvas, que permite a los desarrolladores dibujar gráficos, animaciones y otros elementos visuales directamente en la página utilizando JavaScript.</li>
+                    <li class="mb-5"><strong>API de arrastrar y soltar:</strong> HTML5 introdujo la posibilidad de arrastrar y soltar elementos en una página web, lo que facilita la implementación de interacciones intuitivas.</li>
+                    <li class="mb-5"><strong>WebSockets:</strong> Esta tecnología permite la comunicación bidireccional en tiempo real entre un navegador y un servidor, lo que es especialmente útil para aplicaciones en tiempo real como chats y juegos multijugador.</li>
+                    <li class="mb-5"><strong>Almacenamiento local:</strong> HTML5 proporciona métodos para almacenar datos en el lado del cliente, como el almacenamiento local y las bases de datos en el navegador, lo que permite a las aplicaciones funcionar sin conexión o de manera más eficiente.</li>
+                    <li class="mb-5"><strong>Mejoras en formularios:</strong> HTML5 simplifica la creación de formularios web y agrega nuevos tipos de campos, validaciones y características de autocompletado.</li>
+                    <li class="mb-5"><strong>Geolocalización:</strong> HTML5 permite a las aplicaciones web acceder a la ubicación geográfica del dispositivo del usuario, lo que es útil para servicios basados en la ubicación.</li>
+                    <li class="mb-5"><strong>Accesibilidad mejorada:</strong> HTML5 promueve la creación de contenido web más accesible al proporcionar atributos y elementos diseñados para mejorar la experiencia de los usuarios con discapacidades.</li>
+                    <li class="mb-5"><strong>Compatibilidad móvil:</strong> HTML5 se diseñó teniendo en cuenta los dispositivos móviles, lo que facilita la creación de sitios web y aplicaciones que funcionen bien en pantallas de diferentes tamaños y dispositivos móviles.</li>
+                </ul>
+                
+            </div>
+        </div>
+        </div>
+        </div>
+        <hr>
+        <div class="py-8 flex flex-wrap md:flex-nowrap justify-center items-center">
+            <div class="max-w-4xl px-4 py-8">
+                <h1 class="text-2xl font-medium text-gray-900 title-font mb-2">Elemento HTML</h1>
+                <p class="leading-relaxed mb-4">Un elemento HTML es la unidad básica de construcción de una página web. Se compone de diferentes partes que trabajan juntas para definir el contenido y la presentación de la página.</p>
+        
+                <p class="mb-2">Partes de un elemento HTML:</p>
+        
+                <ul class="list-disc pl-4 mb-4">
+                    <li class="mb-5"><strong>Etiqueta de apertura:</strong> Indica el inicio del elemento. Se compone de dos caracteres: < y el nombre del elemento.</li>
+                    <li class="mb-5"><strong>Atributos:</strong> Son características adicionales que se pueden añadir al elemento para modificar su comportamiento o presentación. Se escriben dentro de la etiqueta de apertura en forma de nombre-valor.</li>
+                    <li class="mb-5"><strong>Contenido:</strong>  Es el texto o los elementos que se encuentran dentro del elemento.</li>
+                    <li class="mb-5"><strong>Etiqueta de cierre:</strong> Indica el final del elemento. Se compone de dos caracteres: </ y el nombre del elemento.</li>                    
+                </ul>
+                
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="flex justify-center">
+            <img src="Img/code 1.png" alt="" width="600px">
+        </div>
+        
+        <hr>
+        <div class="py-8 flex flex-wrap md:flex-nowrap justify-center items-center">
+            <div class="max-w-4xl px-4 py-8">
+                <h1 class="text-2xl font-medium text-gray-900 title-font mb-2">Anatomía de un elemento HTML</h1>
+        
+                
+        <div class="flex justify-center">
+            <img src="Img/anatomía code.png" alt="" width="600px">
+        </div>
+                
+            </div>
+        </div>
+        </div>
+        </div>
+        
+        <hr>
+        <div class="py-8 flex flex-wrap md:flex-nowrap justify-center items-center">
+            <div class="max-w-4xl px-4 py-8">
+                <h1 class="text-2xl font-medium text-gray-900 title-font mb-2">Anidamiento de elementos HTML</h1>
+                <p class="leading-relaxed mb-4">El anidamiento de elementos HTML es el proceso de colocar un elemento HTML dentro de otro elemento HTML. Este es un concepto importante en el lenguaje HTML, ya que permite crear estructuras complejas de contenido web.
+
+                    Para anidar elementos HTML, simplemente abre el elemento padre y luego abre el elemento hijo dentro del elemento padre. Cuando hayas terminado de usar el elemento hijo, ciérralo.</p>
+        
+                <p class="mb-2">Por ejemplo, el siguiente código muestra cómo anidar un elemento p dentro de un elemento div:</p>
+        
+                <div class="flex justify-center">
+                    <img src="Img/code 2.png" alt="" width="400px">
+                </div>
+                
+                <p class="mb-2">El elemento div es el elemento padre y el elemento p es el elemento hijo. El elemento p se encuentra dentro del elemento div.
+
+                    Puedes anidar elementos HTML de cualquier manera que desees. Sin embargo, es importante tener en cuenta que la estructura de tu contenido web debe ser lógica y fácil de entender.
+                    
+                    El anidamiento de elementos HTML puede ser una herramienta poderosa para crear estructuras complejas de contenido web. Sin embargo, es importante usarlo de manera responsable.</p>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <hr>
+        <div class="py-8 flex flex-wrap md:flex-nowrap justify-center items-center">
+            <div class="max-w-4xl px-4 py-8">
+                <h1 class="text-2xl font-medium text-gray-900 title-font mb-2">Comentarios HTML</h1>
+                <p class="leading-relaxed mb-4">Los comentarios HTML son una forma de agregar notas al código HTML que no se mostrarán en la página web. Se pueden usar para proporcionar información sobre el código, explicar el propósito de una sección de código o simplemente para hacer anotaciones.</p>
+        
+                <p class="mb-2">Los comentarios HTML se escriben entre el símbolo de signo menos (-) y el signo mayor (>). Pueden ser una línea o múltiples líneas.</p>
+        
+                <h3 class="text-2xl font-medium text-gray-900 title-font mb-2">Comentario de una sola línea:</h3>
+
+                <div class="flex justify-center">
+                    <img src="Img/coment code.png" alt="" width="400px">
+                </div>
+
+                <h3 class="text-2xl font-medium text-gray-900 title-font mb-2">Comentario de varias líneas:</h3>
+
+                <div class="flex justify-center">
+                    <img src="Img/code 4.png" alt="" width="400px">
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <hr>
+        <div class="py-8 flex flex-wrap md:flex-nowrap justify-center items-center">
+            <div class="max-w-4xl px-4 py-8">
+                <h1 class="text-2xl font-medium text-gray-900 title-font mb-2">Estructura básica de un documento HTML5</h1>
+                <p class="leading-relaxed mb-4">Un documento HTML5 se compone de dos partes principales:</p>
+        
+                <p class="mb-2">1. La cabecera (head)</p>
+                <ul class="list-disc pl-4 mb-4">
+                    <li class="mb-5"><strong>Contiene información sobre el documento:</strong> Como el título, la codificación de caracteres, el tipo de documento y las hojas de estilo.</li>
+                    <li class="mb-5"><strong>No se muestra en la página web.</strong></li>
+                </ul>
+        
+                <p class="mb-2">1. La cabecera (head)</p>
+                <ul class="list-disc pl-4 mb-4">
+                    <li class="mb-5"><strong>!DOCTYPE html: </strong> Declara el tipo de documento como HTML5.</li>
+                    <li class="mb-5"><strong>html:</strong> Define el inicio del documento HTML.</li>
+                    <li class="mb-5"><strong>head:</strong> Define el inicio de la cabecera del documento.</li>
+                    <li class="mb-5"><strong>meta:</strong> Proporciona metadatos sobre el documento, como el título, la codificación de caracteres y la descripción.</li>
+                    <li class="mb-5"><strong>title:</strong> Define el título del documento.para aplicaciones en tiempo real como chats y juegos multijugador.</li>
+                    <li class="mb-5"><strong>link:</strong> Vincula archivos externos al documento, como hojas de estilo o scripts.                    </li>
+                    <li class="mb-5"><strong>script:</strong> Inserta código JavaScript en el documento.</li>
+                    <li class="mb-5"><strong>head:</strong> Define el final de la cabecera del documento.</li>
+                </ul>
+                
+                <p class="mb-2">2. El cuerpo (body)</p>
+                <ul class="list-disc pl-4 mb-4">
+                    <li class="mb-5">Contiene el contenido visible de la página web, como texto, imágenes, vídeos y formularios.</li>
+            
+                
+                    <p class="mb-2">Etiquetas en el cuerpo:</p>
+                    <ul class="list-disc pl-4 mb-4">
+                        <li class="mb-5"><strong>body: </strong>Define el inicio del cuerpo del documento.</li>
+                        <li class="mb-5"><strong>h1-h2: </strong>Definen encabezados de diferentes niveles.</li>
+                        <li class="mb-5"><strong>p:</strong>Define un párrafo de texto.</li>
+                        <li class="mb-5"><strong>ul:</strong>Define una lista sin orden.</li>
+                        <li class="mb-5"><strong>ol:</strong>Define una lista ordenada.</li>
+                        <li class="mb-5"><strong>dl:</strong>Define una lista de definiciones.</li>
+                        <li class="mb-5"><strong>strong:</strong>Define texto en negrita.</li>
+                        <li class="mb-5"><strong>em:</strong>Define texto en cursiva.</li>
+                        <li class="mb-5"><strong>a:</strong>Define un enlace a otra página web.</li>
+                        <li class="mb-5"><strong>img:</strong>Define una imagen.</li>
+                        <li class="mb-5"><strong>form:</strong>Define un formulario.</li>
+                        <li class="mb-5"><strong>/body:</strong>Define el final del cuerpo del documento.</li>
+                        <li class="mb-5"><strong>/html:</strong>Define el final del documento HTML.</li>
+                    </ul>
+                    
+                    
+                    <h3 class="text-2xl font-medium text-gray-900 title-font mb-2">Ejemplo de un documento HTML5 simple:</h3>
+                    <div class="flex justify-center">
+                        <img src="Img/code 5.png" alt="" width="400px">
+                    </div>
+                
+                </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <footer>
+        <a href="sesion2.html" class="text-indigo-500 inline-flex items-center mt-4">Sesión 2
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+            </svg>
+    </footer>
+
+</body>
+
+</html>
